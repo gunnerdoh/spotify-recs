@@ -1,3 +1,5 @@
+// accessToken = "d8b4c9c5f149476582ef0adecf630791"
+
 const initiateSpotifyLogin = async (accessToken: string) => {
 
     try {
