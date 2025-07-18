@@ -1,28 +1,53 @@
 interface SpotifyProfileProps {
-    profile: any;
-    playlists: any;
-  }
-  
-  export default function SpotifyProfile({ profile, playlists }: SpotifyProfileProps) {
-    return (
-      <div>
-        <h2 className="text-xl font-semibold">{profile.display_name}</h2>
-        {profile.images?.[0] && (
-          <img src={profile.images[0].url} alt="Profile" className="w-32 h-32 rounded-full" />
-        )}
-        <p>ID: {profile.id}</p>
-        <p>Email: {profile.email}</p>
+  profile: any;
+  playlists: any;
+}
+
+export default function SpotifyProfile({ profile, playlists }: SpotifyProfileProps) {
+
+  const playlistHrefs = playlists.items.map((item: any) => item.href);
+  // console.log(playlistHrefs);
+
+  // for (let i = 0; i < playlistHrefs.length; i++) {
+  //   playlist = await fetch(playlistHrefs[i], {
+
+  //   })
+  // }
+
+  // console.log(playlistHrefs)
+  return (
+    <div className="">
+      <div className="">
+        <div>
+          <h2 className="">User: {profile.display_name}</h2>
+          {/* <p className="">{profile.email}</p> */}
+        </div>
+      </div>
+
+      <div className="">
+        <p><span className="">ID:</span> {profile.id}</p>
         <p>
-          URI: <a href={profile.external_urls.spotify}>{profile.uri}</a>
+          <span className="">URI:</span>{" "}
+          <a href={profile.external_urls.spotify} className="">
+            {profile.uri}
+          </a>
         </p>
-  
-        <h3 className="mt-4 font-semibold">Playlists:</h3>
-        <ul className="list-disc ml-6">
+      </div>
+
+      <div>
+        <h3 className="">Playlists:</h3>
+        <ul className="">
           {playlists.items.map((pl: any) => (
-            <li key={pl.id}>{pl.name} ({pl.tracks.total} tracks)</li>
+            <li key={pl.id} className="">
+              <span className="">{pl.name}</span>{" "}
+              <span className="">({
+                pl.tracks.total
+              } tracks)</span>
+              <span>{pl.href}</span>
+            </li>
           ))}
         </ul>
       </div>
-    );
-  }
-  
+    </div>
+  );
+}

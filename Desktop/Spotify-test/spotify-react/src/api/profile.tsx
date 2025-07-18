@@ -8,4 +8,3 @@ export async function fetchProfile(token: string): Promise<any> {
   return data;
 }
 
-
