@@ -51,7 +51,7 @@ function App() {
 
       const constructed = await Promise.all(
         playlists.items.map((playlist: any) =>
-          constructPlaylistObject(accessToken, playlist.id)
+          constructPlaylistObject(accessToken, playlist)
         )
       );
 
