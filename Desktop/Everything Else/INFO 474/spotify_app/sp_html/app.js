@@ -28,7 +28,6 @@ window.onload = async () => {
   }
 };
 
-// Spotify helper functions
 async function redirectToSpotifyAuth() {
   const verifier = generateRandomString(128);
   const challenge = await generateCodeChallenge(verifier);
@@ -111,7 +110,6 @@ async function initializeApp() {
     window.spotifyGenreData = data;
     window.spotifyFetchData = fetchGenreData;
 
-    console.log("✅ Spotify data ready for treemap.");
   } catch (err) {
     console.error("Init failed:", err);
   }
@@ -183,11 +181,9 @@ function logoutUser() {
   if (logoutBtn) logoutBtn.style.display = "none";
   if (userInfo) userInfo.textContent = "";
 
-  // Optional: clear visualization
   if (window.treevis) {
     window.treevis = null;
   }
 
-  // Redirect to base page
   window.location.href = redirectUri;
 }

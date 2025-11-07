@@ -13,7 +13,6 @@ function preload() {
 }
 
 function setup() {
-  // Get a reference to the canvas
   let canvas = createCanvas(800, 800)
     .style("border", "2px solid #000")
     .style("margin", "10px");
@@ -45,7 +44,7 @@ function setup() {
     .style("padding", "5px");
 
   createButton("Year")
-    .parent(buttonContainer) // Add to the div
+    .parent(buttonContainer) 
     .mousePressed(() => changeData("long_term"))
     .style("font-weight", "800")
     .style("padding", "5px");
@@ -97,7 +96,6 @@ function loadTreemap() {
 function changeData(range) {
   console.log("Loading data for:", range);
 
-  // If Spotify data was fetched, use it dynamically
   if (window.spotifyFetchData) {
     window.spotifyFetchData(range).then((newData) => {
       if (newData) {
@@ -107,7 +105,6 @@ function changeData(range) {
       }
     });
   } else {
-    // fallback to local files if no Spotify
     const fileMap = {
       short_term: "spotify-genres-short.json",
       medium_term: "spotify-genres-med.json",
